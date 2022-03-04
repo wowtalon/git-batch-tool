@@ -46,7 +46,7 @@ def count_by_path(repos_dir):
     repo_count = {}
 
     for repo in os.listdir(repos_dir):
-        print(repo)
+        cprint('[*] Counting {}...'.format(repo), 'yellow')
         if not os.path.isdir(os.path.join(repos_dir, repo, '.git')):
             print('Empty Folder.')
             continue
@@ -67,6 +67,7 @@ def count_by_path(repos_dir):
 
 
 def count():
+    cprint('[*] Git count start.', 'green')
     repos_dirs = [
         os.path.join(base_dir, 'repos')
     ]
@@ -76,6 +77,7 @@ def count():
         _repo_count = count_by_path(repos_dir)
         for repo in _repo_count:
             repo_count[repo] = _repo_count[repo]
+    cprint('[*] Git count done.', 'green')
     return repo_count
 
 
